@@ -3,6 +3,7 @@ require 'net/https'
 require 'uri'
 
 query = URI.encode_www_form_component(ENV['KEYWORD'])
+ii =  ARGV.map{|item| URI.encode_www_form_component(item)}
 uri = URI.parse("https://qiita.com/api/v2/items?query=body:#{query}")
 res = Net::HTTP.get_response(uri)
 
