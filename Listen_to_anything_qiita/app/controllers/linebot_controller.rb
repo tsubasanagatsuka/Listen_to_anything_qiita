@@ -1,4 +1,4 @@
-class LineBotController < ApplicationController
+class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
 
   protect_from_forgery except: [:callback] # CSRF対策無効化
@@ -11,6 +11,7 @@ class LineBotController < ApplicationController
   end
 
   def callback
+    qiita = QiitaApi.new
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -25,11 +26,12 @@ class LineBotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: event.message['text']
-          }
-          client.reply_message(event['replyToken'], message)
+          reply_messages = []
+          messages = qiita.search_results(event.message['text'])
+          messages.each do |message|
+            reply_messages << {type: "text", text: message}
+          end
+          client.reply_message(event['replyToken'], reply_messages)
         end
       end
     end
