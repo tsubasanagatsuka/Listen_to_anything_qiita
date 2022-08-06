@@ -3,7 +3,7 @@ listen to anything qiita
 
 # アプリケーション概要
 LINEに検索したいキーワードを入力しQiitaから新着５件の情報を取り出してくれる。 
-
+[![Image from Gyazo](https://i.gyazo.com/c100df2bdb2957f5fca8f48099dd7f37.gif)](https://gyazo.com/c100df2bdb2957f5fca8f48099dd7f37)
 
 # 利用方法
 
