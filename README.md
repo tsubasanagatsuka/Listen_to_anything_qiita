@@ -4,8 +4,6 @@ listen to anything qiita
 # アプリケーション概要
 LINEに検索したいキーワードを入力しQiitaから新着５件の情報を取り出してくれる。 
 
-#　URL
-(https://listen-qiita.herokuapp.com/)
 
 # 利用方法
 
